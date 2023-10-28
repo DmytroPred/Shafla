@@ -45,13 +45,16 @@ function HomePage() {
       Math.random() * (heroesCtx.selectedHeroes.length + 1)
     );
 
-    const randomHeroIndex = heroesCtx.selectedHeroes[randomNumber];
-
+    const randomHeroIndex =
+      heroesCtx.selectedHeroes[
+        randomNumber === heroesCtx.selectedHeroes.length
+          ? randomNumber - 1
+          : randomNumber
+      ];
     const randHero = heroesCtx.heroList.find(
       (hero) => hero.selected && hero.id === randomHeroIndex
     );
 
-    console.log(randHero);
     if (randHero) setRandomHero(randHero);
   };
 
