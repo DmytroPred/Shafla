@@ -41,16 +41,15 @@ function HomePage() {
   );
 
   const getRandomHeroFromSelected = () => {
-    const randomNumber = Math.floor(
-      Math.random() * (heroesCtx.selectedHeroes.length + 1)
-    );
+    const generateRandom = () =>
+      Math.floor(Math.random() * (heroesCtx.selectedHeroes.length + 1));
+    const randomNumber = generateRandom();
 
-    const randomHeroIndex =
-      heroesCtx.selectedHeroes[
-        randomNumber === heroesCtx.selectedHeroes.length
-          ? randomNumber - 1
-          : randomNumber
-      ];
+    if (randomNumber === heroesCtx.selectedHeroes.length) {
+      getRandomHeroFromSelected();
+    }
+
+    const randomHeroIndex = heroesCtx.selectedHeroes[randomNumber];
     const randHero = heroesCtx.heroList.find(
       (hero) => hero.selected && hero.id === randomHeroIndex
     );
@@ -63,7 +62,7 @@ function HomePage() {
       <BackgroundVid />
       <div className='w-11/12 h-11/12 mx-auto flex justify-between'>
         <input
-          className='text-input mt-12'
+          className='text-input mt-4'
           type='text'
           placeholder='Search by name...'
           onChange={(e) => {
@@ -73,24 +72,14 @@ function HomePage() {
           }}
         />
 
-        {/* <div className='flex gap-x-1 bg-slate-200 rounded-full border'>
+        <div className='w-56'>
           <button
-            className={`${
-              tasksCtx.taskTableView && 'bg-gray-50'
-            } rounded-full px-4`}
-            onClick={() => tasksCtx.setTaskTableView(true)}
+            className='submit-button w-56 mt-4'
+            onClick={getRandomHeroFromSelected}
           >
-            Table
+            Shaffle
           </button>
-          <button
-            className={`${
-              !tasksCtx.taskTableView && 'bg-gray-50'
-            } rounded-full px-4 `}
-            onClick={() => tasksCtx.setTaskTableView(false)}
-          >
-            Cards
-          </button>
-        </div> */}
+        </div>
       </div>
 
       <div
@@ -107,7 +96,7 @@ function HomePage() {
               onClick={() => updateHeroStatus(hero)}
             >
               <img
-                className={`h-16 cursor-pointer duration-100 hover:scale-110 ${
+                className={`h-12 cursor-pointer duration-100 hover:scale-110 ${
                   hero.disabled === false && 'grayscale'
                 } ${
                   hero.id === randomHero?.id &&
@@ -125,15 +114,6 @@ function HomePage() {
             </div>
           );
         })}
-      </div>
-
-      <div className='mx-auto w-56'>
-        <button
-          className='submit-button w-56'
-          onClick={getRandomHeroFromSelected}
-        >
-          Shaffle
-        </button>
       </div>
     </>
   );

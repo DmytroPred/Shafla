@@ -17,7 +17,7 @@ const Header = () => {
   );
 
   return (
-    <div className='shadow-lg bg-black py-8 px-8 text-white flex justify-between items-center'>
+    <div className='shadow-lg bg-black py-4 px-8 text-white flex justify-between items-center'>
       <div className='flex gap-10'>
         <img
           className='w-12 cursor-pointer'
