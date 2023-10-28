@@ -4,7 +4,8 @@ import { IHero } from './models/hero.interface';
 import { debounce } from './utils/debounce';
 import HeroesContext, { HeroesContextType } from './store/heroesContext';
 import AuthContext from './store/auth-context';
-import BackgroundVid from './components/ui/BackgroundVid';
+import Background from './components/ui/Background';
+import { randomNum } from './utils/random-number';
 
 function HomePage() {
   const authCtx = useContext(AuthContext);
@@ -41,13 +42,7 @@ function HomePage() {
   );
 
   const getRandomHeroFromSelected = () => {
-    const generateRandom = () =>
-      Math.floor(Math.random() * (heroesCtx.selectedHeroes.length + 1));
-    const randomNumber = generateRandom();
-
-    if (randomNumber === heroesCtx.selectedHeroes.length) {
-      getRandomHeroFromSelected();
-    }
+    const randomNumber = randomNum(heroesCtx.selectedHeroes.length);
 
     const randomHeroIndex = heroesCtx.selectedHeroes[randomNumber];
     const randHero = heroesCtx.heroList.find(
@@ -59,7 +54,7 @@ function HomePage() {
 
   return (
     <>
-      <BackgroundVid />
+      <Background />
       <div className='w-11/12 h-11/12 mx-auto flex justify-between'>
         <input
           className='text-input mt-4'
