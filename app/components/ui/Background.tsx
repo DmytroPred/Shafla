@@ -1,10 +1,16 @@
+'use client';
 import { randomNum } from '@/app/utils/random-number';
 import { BACKGROUND_URL } from '@/public/data/background';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const Background = () => {
   const backgrounds = BACKGROUND_URL;
-  const randomNumber = useRef<number>(randomNum(backgrounds.length));
+  const randomNumber = useRef<number>(0);
+
+  useEffect(() => {
+    randomNumber.current = randomNum(backgrounds.length);
+  }, []);
+
   return (
     <div className='absolute w-full -z-10'>
       <img
