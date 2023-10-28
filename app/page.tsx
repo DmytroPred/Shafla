@@ -4,6 +4,7 @@ import { IHero } from './models/hero.interface';
 import { debounce } from './utils/debounce';
 import HeroesContext, { HeroesContextType } from './store/heroesContext';
 import AuthContext from './store/auth-context';
+import BackgroundVid from './components/ui/BackgroundVid';
 
 function HomePage() {
   const authCtx = useContext(AuthContext);
@@ -56,9 +57,10 @@ function HomePage() {
 
   return (
     <>
-      <div className='w-11/12 h-11/12 mt-12 mx-auto flex justify-between'>
+      <BackgroundVid />
+      <div className='w-11/12 h-11/12 mx-auto flex justify-between'>
         <input
-          className='text-input'
+          className='text-input mt-12'
           type='text'
           placeholder='Search by name...'
           onChange={(e) => {
@@ -95,13 +97,18 @@ function HomePage() {
         {heroesCtx.heroList.map((hero: IHero) => {
           return (
             <div
-              className='relative'
+              className={`relative z-0 hover:!z-10 ${
+                hero.id === randomHero?.id && '!z-10'
+              }`}
               key={hero.id}
               onClick={() => updateHeroStatus(hero)}
             >
               <img
                 className={`h-16 cursor-pointer duration-100 hover:scale-110 ${
                   hero.disabled === false && 'grayscale'
+                } ${
+                  hero.id === randomHero?.id &&
+                  'scale-125 shadow-[0_0_20px_15px] shadow-yellow-400'
                 }`}
                 src={`./images/heroes/${hero.image}_full.png`}
                 alt={hero.localized_name}
@@ -124,12 +131,6 @@ function HomePage() {
         >
           Shaffle
         </button>
-
-        <img
-          className='rounded-lg mt-4 mb-4'
-          src={`./images/heroes/${randomHero?.image}_full.png`}
-          alt=''
-        />
       </div>
     </>
   );
