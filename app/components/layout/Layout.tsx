@@ -6,13 +6,10 @@ import { User, onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '@/app/config/firebase';
 import { useRouter } from 'next/navigation';
 import {
-  CollectionReference,
   DocumentData,
   DocumentReference,
-  collection,
   doc,
   getDoc,
-  getDocs,
 } from 'firebase/firestore';
 import HeroesContext, { HeroesContextType } from '@/app/store/heroesContext';
 
