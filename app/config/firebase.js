@@ -3,12 +3,12 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth"
 import { getFirestore } from 'firebase/firestore';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB4LAcKNrniISycIds6oW7M-L0pwWLpYbo",
-  authDomain: "shafla.firebaseapp.com",
-  projectId: "shafla",
-  storageBucket: "shafla.appspot.com",
-  messagingSenderId: "658018532875",
-  appId: "1:658018532875:web:7299557412f7f61ac2510e"
+  apiKey: "AIzaSyD5KQXe0QR3BXo5HerK76xvQnmhJS8JzHU",
+  authDomain: "shafla-8586b.firebaseapp.com",
+  projectId: "shafla-8586b",
+  storageBucket: "shafla-8586b.appspot.com",
+  messagingSenderId: "423714530497",
+  appId: "1:423714530497:web:90525b71e9ac3a6708a040"
 };
 
 const app = initializeApp(firebaseConfig);

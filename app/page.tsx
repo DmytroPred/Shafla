@@ -42,6 +42,7 @@ function HomePage() {
   );
 
   const getRandomHeroFromSelected = () => {
+    if (!heroesCtx.selectedHeroes.length) return;
     const randomNumber = randomNum(heroesCtx.selectedHeroes.length);
 
     const randomHeroIndex = heroesCtx.selectedHeroes[randomNumber];
