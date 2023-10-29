@@ -15,7 +15,6 @@
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^7.47.0",
-    "react-quill": "^2.0.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
