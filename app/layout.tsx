@@ -6,6 +6,8 @@ import { HeroesContextProvider } from './store/heroesContext';
 
 const inter = Inter({ subsets: ['latin'] });
 export const metadata = {
+  title: 'Dota heroes shuffle',
+  description: 'Select your heroes and get random for pick',
   verification: {
     google: 'WBQMJqQoc4z5k9NO7SFdwPcoIK4YGWuLGOgW9ckxURM',
   },
